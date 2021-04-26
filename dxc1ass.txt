@@ -1,0 +1,82 @@
+
+
+
+=>SQL> select sysdate+10 from dual;
+
+SYSDATE+1
+---------
+06-MAY-21
+
+=>SQL> select sysdate from dual;
+
+SYSDATE
+---------
+26-APR-21
+
+=>SQL> select to_char(sysdate,'dd/mm/yy day') from dual;
+
+TO_CHAR(SYSDATE,'DD/MM/YYDAY')
+---------------------------------------------
+26/04/21 monday
+
+=>SQL> select to_char(sysdate,'dd/mm/yy') from dual;
+
+TO_CHAR(
+--------
+26/04/21
+SQL> select to_char(sysdate,' day') from dual;
+
+TO_CHAR(SYSDATE,'DAY')
+-------------------------------------
+ monday
+
+
+==>SQL>
+SQL> create table stocks
+  2  (
+  3  items varchar(20),
+  4  details varchar(50),
+  5  purprice int
+  6 currdd DATE
+    );
+
+Table created.
+
+
+
+
+SQL> insert into stocks values('balls','size is 100m',100,to_date('22-08-2000','dd-mm-yyyy'));
+
+1 row created.
+
+SQL> insert into stocks values('bats','size is 1000m',500,to_date('24-08-2000','dd-mm-yyyy'));
+
+1 row created.
+
+
+
+=>SQL> create table sales
+  2  (
+  3  salesid int,
+  4  salename varchar(20),
+  5  salesprice int,
+  6  gstrate int,
+  7  amount int,
+  8  dd  DATE);
+
+Table created.
+
+insert into sales values(1,'som',2,4,4000,to_date('22-08-2000','DD-MM-YYYY'));
+insert into sales values(2,'sam',4,4,4000,to_date('24-08-2000','DD-MM-YYYY'));
+insert into sales values(3,'sum',2,6,4000,to_date('23-08-2000','DD-MM-YYYY'));
+
+
+
+
+1 row created.
+
+
+
+
+
+
