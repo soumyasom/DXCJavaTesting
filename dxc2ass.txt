@@ -1,0 +1,106 @@
+SQL> create table employee
+  2  (
+  3  EmpFname varchar(20),
+  4  EmpMname varchar(20),
+  5  EmpLastname varchar(20),
+  6  EmpAge int check(EmpAge between 0 and 49),
+  7  EmpCity varchar(20) check(EmpCity like 'b%' ),
+  8  EmpDesignation varchar(20),
+  9  EmpId varchar(20) primary key check(EmpId like '_____'),
+ 10  empDOB DATE);
+
+Table created.
+
+SQL> insert into employee values('soumya','sri','mothe',22,'buvanesh','sales','emp01',to_date('22-08-2000','dd-mm-yyyy'));
+
+1 row created.
+
+SQL> insert into employee values('ramaswamy','sri','mekala',23,'buvangir','manager','emp02',to_date('22-08-2000','dd-mm-yyyy'));
+
+1 row created.
+
+SQL> insert into employee values('sahith','reddy','kandi',23,'bumbai','hr','emp03',to_date('22-08-1998','dd-mm-yyyy'));
+
+1 row created.
+
+SQL> insert into employee values('jith','reddy','thigala',23,'bubb','acc','emp04',to_date('29-05-1998','dd-mm-yyyy'));
+
+1 row created.
+
+SQL> insert into employee values('roshan','reddy','thigala',24,'bubb','manager','emp05',to_date('29-05-1999','dd-mm-yyyy'));
+
+1 row created.
+SQL> update employee set EmpCity='badrachalam' where EmpFname='soumya';
+
+1 row updated.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> delete employee where EmpId='emp01';
+
+1 row deleted.
+
+SQL> rollback;
+
+Rollback complete.
+SQL> commit;
+
+Commit complete.
+
+SQL> delete employee;
+
+5 rows deleted.
+
+SQL> rollback;
+
+Rollback complete.
+SQL> select EmpFname,to_char(empDOB,'dd-mm-yyyy') from employee;
+
+EMPFNAME             TO_CHAR(EM
+-------------------- ----------
+soumya               22-08-2000
+ramaswamy            22-08-2000
+sahith               22-08-1998
+jith                 29-05-1998
+roshan               29-05-1999
+SQL> select substr(empFname,1,1)||'.'||substr(empMname,1,1)||'.'||empLastname from employee
+  2  ;
+
+SUBSTR(EMPFNAME,1,1)||'.'||SUB
+------------------------------
+s.s.mothe
+r.s.mekala
+s.r.kandi
+j.r.thigala
+r.r.thigala
+---------------------------------------------------Task 2------------------------------------------------------------
+ create table titable
+  2  (
+  3  pday varchar(20),
+  4  sess int,
+  5  sname varchar(20),
+  6  sem  int,
+  7  room varchar(20),
+  8  pclass varchar(20),
+  9  unique(sess,sname,pday),
+ 10  unique(pday,sem,sess),
+ 11  unique(room,pday,sem)
+ 12  );
+SQL> insert into titable values('mon',1,'john',7,'r1','java');
+
+1 row created.
+
+SQL> insert into titable values('mon',1,'john',7,'r1','java');
+insert into titable values('mon',1,'john',7,'r1','java')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYS.SYS_C007023) violated
+
+
+SQL> insert into titable values('mon',1,'john',5,'r2','testing');
+insert into titable values('mon',1,'john',5,'r2','testing')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYS.SYS_C007023) violated
