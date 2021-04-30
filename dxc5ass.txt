@@ -1,0 +1,155 @@
+
+
+
+............................Program to Check Whether it contains Upper Case Letters.........................
+public class MyFirstJava {
+
+String ContainsUpper(String data)
+{
+char[] ar= data.toCharArray();
+int c=0;
+
+for(int i=0;i<ar.length;i++)
+{
+
+if((int)ar[i]>=65&&(int)ar[i]<=90)
+c=1;
+
+}
+String val=new String();
+if(c==1)
+{
+val="yes";
+return val;
+}
+else
+{
+val="no";
+return val;
+}
+
+}
+
+
+public static void main(String[] args) {
+
+String test=args[0];
+
+MyFirstJava m=new MyFirstJava();
+String res= m.ContainsUpper(test);
+System.out.println(res);
+}
+}
+
+..........................................Program to check whether the string contains number...............................
+public class MyFirstJava {
+
+String ContainsNumber(String data)
+{
+char[] ar= data.toCharArray();
+int c=0;
+
+for(int i=0;i<ar.length;i++)
+{
+
+if((int)ar[i]>=48&&(int)ar[i]<=57)
+c=1;
+
+}
+String val=new String();
+if(c==1)
+{
+val="yes";
+return val;
+}
+else
+{
+val="no";
+return val;
+}
+
+}
+
+
+public static void main(String[] args) {
+
+String test=args[0];
+
+MyFirstJava m=new MyFirstJava();
+String res= m.ContainsNumber(test);
+System.out.println(res);
+}
+}
+
+.......................................Program to check whether all chars in the given string upper or not....................
+
+public class MyFirstJava {
+
+boolean isCapsOnly(String data)
+{
+char[] ar= data.toCharArray();
+int c=0;
+
+for(int i=0;i<ar.length;i++)
+{
+
+if((int)ar[i]>=65&&(int)ar[i]<=90)
+{
+c++;
+}
+
+}
+if(c==ar.length)
+return true;
+else
+return false;
+
+
+}
+
+
+public static void main(String[] args) {
+
+String test=args[0];
+
+MyFirstJava m=new MyFirstJava();
+boolean res= m.isCapsOnly(test);
+System.out.println(res);
+}
+}
+........................................program to count the caps in the given string.................................
+public class MyFirstJava {
+
+int countCaps(String data)
+{
+char[] ar= data.toCharArray();
+int c=0;
+
+for(int i=0;i<ar.length;i++)
+{
+
+if((int)ar[i]>=65&&(int)ar[i]<=90)
+{
+c++;
+}
+
+}
+return c;
+
+}
+
+
+public static void main(String[] args) {
+
+String test=args[0];
+
+MyFirstJava m=new MyFirstJava();
+int res= m.countCaps(test);
+System.out.println(res);
+}
+}
+
+
+
+
+
