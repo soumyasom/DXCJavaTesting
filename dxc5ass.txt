@@ -148,6 +148,80 @@ int res= m.countCaps(test);
 System.out.println(res);
 }
 }
+.....................................reate a function to   check 2 given Strings
+are equal or not irrespective of the case................................................
+
+public class MyFirstJava {
+
+boolean isequal(String data,String data2)
+{
+char[] ar= data.toCharArray();
+char[] ar1=data2.toCharArray();
+int c=0;
+
+for(int i=0;i<ar.length;i++)
+{
+if(ar[i]==ar1[i])
+c++;
+else if(((int)ar[i])-32==(int)ar1[i])
+c++;
+else if(((int)ar1[i])-32==(int)ar1[i])
+c++;
+}
+if(c==ar.length)
+return true;
+else
+return false;
+}
+
+public static void main(String[] args) {
+
+String test="hello";
+String test1="HELLO";
+
+MyFirstJava m=new MyFirstJava();
+boolean res= m.isequal(test,test1);
+System.out.println(res);
+}
+}
+
+.......................................create a function to   check 2 given chars
+are equal or not irrespective of the case...........................................
+public class MyFirstJava {
+
+boolean isequal(char d1,char d2)
+{
+char ar= d1;
+char ar1=d2;
+int c=0;
+if(ar==ar1)
+c++;
+else if(((int)ar-32)==(int)ar1)
+c++;
+else if(((int)ar1-32)==(int)ar1)
+c++;
+else
+c=0;
+if(c==1)
+return true;
+else
+return false;
+}
+
+public static void main(String[] args) {
+
+char test='h';
+char test1='j';
+
+MyFirstJava m=new MyFirstJava();
+boolean res= m.isequal(test,test1);
+System.out.println(res);
+}
+}
+
+
+
+
 
 
 
