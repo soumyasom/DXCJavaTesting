@@ -1,0 +1,139 @@
+................................Q1)   int sum(int... x){
+System.out.println("sum meth "+x[6]);
+return 10;
+}...............................................................
+public class MyFirstJava1 {
+
+public int Sumre(int ...x)
+{
+int min=888888,max=0,sum=0,odd=0,even=0,div=0;
+for(int i:x)
+{
+if(i<min)
+min=i;
+if(i>max)
+max=i;
+sum=sum+i;
+if(i%2==0)
+even++;
+else 
+odd++;
+if(i%3==0)
+div++;
+}
+System.out.println("max"+max);
+System.out.println("min"+min);
+System.out.println("div"+div);
+System.out.println("even"+even);
+System.out.println("odd"+odd);
+return sum;
+}
+public static void main(String[] args)
+ {
+MyFirstJava1 m=new MyFirstJava1();
+int res= m.Sumre(10,20,30,40,50);
+System.out.println(res);
+}
+}
+.......................................2nd question.........Q2) reverse a given string 
+
+Example :  Hello
+
+output: olleH.............................................
+public class MyFirstJava {
+
+String rever(String data)
+{
+char[] ar= data.toCharArray();
+String re=" ";
+for(int i=ar.length-1;i>=0;i--)
+{
+re=re+ar[i];
+}
+return re;
+}
+
+public static void main(String[] args) {
+
+String test=args[0];
+//char test1='j';
+
+MyFirstJava m=new MyFirstJava();
+String res= m.rever(test);
+System.out.println(res);
+}
+}
+
+
+........................3rdquestion......................
+q3) reverse a given string and maintain its caps position
+
+EX:  
+input ->  HeLloWorld
+output-DlRowOlleh
+
+input ->  MyJavaWorld
+output-DlRoWaVajym
+.........................................................................
+
+
+
+
+
+public class strrev{
+
+String isequal(String data)
+{
+char[] ar= data.toCharArray();
+String re=" ";
+int c=0;
+char k;
+for(int i=ar.length-1;i>=0;i--)
+{
+if((int)ar[c]<=90)
+{
+    if((int)ar[i]<=90)
+   {
+   re=re+ar[i];
+    }
+   else
+   {
+   k=(char)((int)ar[i]-32);
+   re=re+k;
+   }
+}
+else
+{
+ if((int)ar[i]>=97&&(int)ar[i]<=122)
+   {
+   re=re+ar[i];
+    }
+   else
+   {
+   k=(char)((int)ar[i]+32);
+   re=re+k;
+   }
+}
+c++;
+//System.out.println(c+"value");
+}
+//System.out.println(c+"value");
+return re;
+}
+
+
+public static void main(String[] args) {
+
+String test=args[0];
+//char test1='j';
+
+strrev m=new strrev();
+String res= m.isequal(test);
+System.out.println(res);
+}
+}
+
+
+
+
+
