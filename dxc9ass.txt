@@ -1,0 +1,150 @@
+package om.myproj.service;
+import com.myproj.dao.PlayerDao;
+
+//package om.myproj.service;
+
+import com.myproj.dao.StudentDao;
+import com.myproj.model.Player;
+import com.myproj.model.Student;
+
+public class PlayerService {
+
+
+
+public static void main(String[] args) {
+
+
+//Student student=new Student(1016, "MAHI", "MALE", 103, 8, 100);
+Player player=new Player("sony","bowler","right bowler","SRH");
+
+
+PlayerDao dao=new PlayerDao();
+String res= dao.savePlayer(player);
+
+System.out.println(res);
+}
+
+}
+.................................................................................
+package com.myproj.model;
+
+public class Player {
+	String Name;
+	String Role;
+	String Style;
+	String Team;
+	public Player(String studentName, String Role,String Style, String Team) {
+		super();
+		this.Name=Name;
+		this.Role=Role;
+		this.Style=Style;
+		this.Team=Team;
+	}
+
+	public String getPlayerName() {
+		return Name;
+		}
+		public void setStudentName(String Name) {
+		this.Name = Name;
+		}
+		
+		public String getPlayerRole() {
+			return Role;
+			}
+			public void setPlayerRole(String Role) {
+			this.Role = Role;
+			}
+			public String getPlayerStyle() {
+				return Style;
+				}
+				public void setPlayerStyle(String Style) {
+				this.Style = Style;
+				}
+				public String getPlayerTeam() {
+					return Team;
+					}
+					public void setPlayerTeam(String Team) {
+					this.Team = Team;
+					}
+					public String toString() {
+						return   Name+" "+Role+" "+Style+" "+Team+" ";
+						}
+}
+........................................................................................................
+package com.myproj.dbutil;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DbConn {
+
+public static Connection dbConnect()
+{
+try{
+Class.forName("oracle.jdbc.OracleDriver");
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","dxctest","pass");
+return con;
+}
+catch (Exception e) {
+e.printStackTrace();
+return null;
+}
+}
+}
+................................................................................................................
+package com.myproj.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.myproj.dbutil.DbConn;
+import com.myproj.model.Player;
+
+//dml -> executeUpdate()
+//dql -> executeQuery()
+
+
+public class PlayerDao {
+
+
+public String savePlayer(Player player)
+{
+
+try {
+String sql="insert into player values(?,?,?,?)";
+
+Connection con= DbConn.dbConnect();
+PreparedStatement stat=con.prepareStatement(sql);
+
+stat.setString(1, player.getPlayerName());
+stat.setString(2, player.getPlayerRole());
+stat.setString(3, player.getPlayerStyle());
+stat.setString(4, player.getPlayerTeam());
+int res= stat.executeUpdate();
+
+if(res>0)
+return "recs inserted";
+
+}
+catch(Exception e)
+{
+
+e.printStackTrace();
+}
+
+
+return "cannot insert recs";
+}
+
+}
+........................................................................
+ create table player(
+  2  name varchar(20),
+  3  role varchar(20),
+  4  style varchar(20),
+  5  team varchar(20)
+  6  );
+
+Table created.
+SQL> insert into  player values('soumya','captain','left hand bowler','RCB');
+
+1 row created.
